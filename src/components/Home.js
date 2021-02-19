@@ -35,12 +35,7 @@ const Home = () => {
   }, [search])
 
   console.log(word.results)
-
-  function saveWord(word) {
-    axios.post('/api/words/create', {
-      "word": word.word, "definition": word.results
-    })
-  }
+  
   return <main>
     <form onSubmit={handleSubmit}>
       <input
@@ -58,9 +53,7 @@ const Home = () => {
       })}
     </ul>
 
-    <button
-      onClick={saveWord}
-    >
+    <button>
       Save Word
       </button>
   </main>
