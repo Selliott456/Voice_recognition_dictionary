@@ -34,7 +34,9 @@ const Home = () => {
           updateWord(resp.data)
         })
         .catch(function (error) { 
+          updateWord('')
           return updateErrorMessage("this word does not exist")
+
         })
     
     }
