@@ -7,6 +7,7 @@ const Home = () => {
   const [input, updateInput] = useState('')
   const [search, updateSearch] = useState('')
   const [word, updateWord] = useState('')
+  const [errorMessage, updateErrorMessage] = useState('')
 
   function handleChange(event) {
     const input = event.target.value
@@ -31,11 +32,15 @@ const Home = () => {
         .then(resp => {
           updateWord(resp.data)
         })
+        .catch(function (error) { 
+          return updateErrorMessage("this word does not exist")
+        })
+    
     }
   }, [search])
 
   console.log(word.results)
-  
+
   return <main>
     <form onSubmit={handleSubmit}>
       <input
@@ -47,16 +52,17 @@ const Home = () => {
     </form>
 
     <h1>{word.word && word.word}</h1>
+    <span>{errorMessage}</span>
     <ul>
       {word.results && word.results.map((result, index) => {
+        if (!result) {
+          return<h1> no result </h1>
+        }
         return <li key={index}>{result.definition}</li>
       })}
     </ul>
-
-    <button>
-      Save Word
-      </button>
   </main>
+
 }
 
 
