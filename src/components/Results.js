@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Results = (props) => {
 
@@ -24,6 +25,7 @@ const Results = (props) => {
         .then(resp => {
           updateErrorMessage('')
           updateWord(resp.data)
+          console.log(resp.data)
         })
         .catch(function (error) {
           updateWord('')
@@ -31,7 +33,7 @@ const Results = (props) => {
         })
 
     }
-  })
+  }, [])
 
   if (!word) {
     return <h1>loading</h1>
@@ -39,11 +41,26 @@ const Results = (props) => {
     return <div>
       <h1>{word.word && word.word}</h1>
       <span>{errorMessage}</span>
-      <ul>
-        {word.results && word.results.map((result, index) => {
-          return <li key={index}>{result.definition}</li>
-        })}
-      </ul>
+
+      {word.results && word.results.map((result, index) => {
+        return <details key={index}>
+          <summary>Result {index + 1}</summary>
+          <h4>Definition</h4>
+          <p >{result.definition}</p>
+          <h4>Type of word</h4>
+          <small>{result.partOfSpeech}</small>
+          <h4>synonyms</h4>
+          <ul>
+            {result.synonyms && result.synonyms.map((word, index) => {
+              return <div key={index}>
+                <li>{word}</li>
+              </div>
+            })}
+          </ul>
+        </details>
+      })}
+
+      <Link to="/">Home</Link>
     </div>
   }
 
