@@ -30,6 +30,7 @@ const Home = () => {
           }
         })
         .then(resp => {
+          updateErrorMessage('')
           updateWord(resp.data)
         })
         .catch(function (error) { 
