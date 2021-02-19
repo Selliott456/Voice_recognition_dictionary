@@ -34,14 +34,13 @@ const Results = (props) => {
 
     }
   }, [])
-
+  
   if (!word) {
     return <h1>loading</h1>
   } else {
     return <div>
       <h1>{word.word && word.word}</h1>
       <span>{errorMessage}</span>
-
       {word.results && word.results.map((result, index) => {
         return <details key={index}>
           <summary>Result {index + 1}</summary>
