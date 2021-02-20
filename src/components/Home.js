@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import logo from '../styles/logo.png'
 import '../styles/style.scss'
 
 
 const Home = () => {
+ 
 
   const [input, updateInput] = useState('')
   const [search, updateSearch] = useState('')
@@ -20,8 +21,7 @@ const Home = () => {
     event.preventDefault()
     updateSearch(input)
   }
-
-
+ 
 
 
   return <main id="mainHome">
@@ -34,7 +34,8 @@ const Home = () => {
         onChange={handleChange}
         name="word"
       />
-      <button><Link className="search" to={{ pathname: '/results', aboutProps: { input } }}>Search</Link>
+      <button>
+        <Link className="search" to={{ pathname: '/results', aboutProps: { input } }}>Search</Link>
       </button>
     </form>
   </main>

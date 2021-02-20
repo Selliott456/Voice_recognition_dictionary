@@ -27,6 +27,9 @@ body {
   font-family: var(--font);
 }
 h1, h2, h3, h4 {
+  color: var(--light)
+}
+p, small {
   color: var(--extraLight)
 }
 #logo{
@@ -59,12 +62,86 @@ button {
   text-decoration: none;
   color: var(--extraLight);
   font-size: 20px;
+
 }
 .button {
   background-color: var(--light);
   font-size: 20px;
   color: #F4DB7D;
   text-decoration: none;
-  padding: 20px;
+  padding: 10px 20px;
   border-radius: 4px;
+  margin: 40px;
+}
+details > summary {
+  list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+  display: none;
+}
+li{
+  list-style: none;
+}
+
+.definition {
+  border: solid 1px var(--extraLight);
+  width: 70vw;
+  margin: 20px;
+  border-radius: 4px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: solid 1px var(--dark);
+}
+.synonyms{
+  display: flex;
+  flex-direction: column;
+}
+.extraInfo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70vw;
+  background-color: var(--mid);
+  border: double 1px var(--light);
+  border-radius: 4px;
+}
+.container {
+  margin: 20px;
+}
+summary {
+  color: var(--mid);
+  width: 70vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.error {
+  margin-top: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#word {
+  font-size: 60px;
+  width: 70vw;
+  border: solid 2px var(--extraLight);
+  background-color: var(--background);
+  border-radius: 4px;
+  padding: 30px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.instructions {
+ 
+  color: var(--extraLight);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -36,38 +36,44 @@ const Results = (props) => {
   }, [])
 
   if (errorMessage) {
-    return <div><h1>{errorMessage}</h1>
+    return <div className="error">
+      <h1>{errorMessage}</h1>
       <Link className="button" to="/">Enter Another Word</Link>
     </div>
   } else if (!search) {
-    return <div>
+    return <div className="error">
       <h1>You didn't enter a word!</h1>
       <Link className="button" to="/">Enter Another Word</Link>
     </div>
-
   } else if (!word) {
     return <h1>Loading</h1>
   } else {
     return <div role="main">
-      <h1>{word.word && word.word}</h1>
+      <h1 id="word">{word.word && word.word}</h1>
+      <p className="instructions">Choose one of the results to see a definition!</p>
       {word.results && word.results.map((result, index) => {
-        return <details key={index}>
-          <summary id="summary">Result {index + 1}</summary>
-          <h2>Definition</h2>
-          <p >{result.definition}</p>
-          <h3>Type of word</h3>
-          <small>{result.partOfSpeech}</small>
-          <h4>synonyms</h4>
-          <ul>
-            {result.synonyms && result.synonyms.map((word, index) => {
-              return <div key={index}>
-                <li>{word}</li>
+        return <div key={index} className="container">
+          <details >
+            <summary id="summary">Result {index + 1}</summary>
+            <section className="definition">
+              <h2>Definition</h2>
+              <p >{result.definition}</p>
+            </section>
+            <section className="extraInfo">
+              <div className="row">
+                <h3>Type of word: </h3>
+                <p>{result.partOfSpeech}</p>
               </div>
-            })}
-          </ul>
-        </details>
+              <h4>synonyms</h4>
+              {result.synonyms && result.synonyms.map((word, index) => {
+                return <div key={index}>
+                  <p>{word}</p>
+                </div>
+              })}
+            </section>
+          </details>
+        </div>
       })}
-
       <Link className="button" to="/">Home</Link>
     </div>
   }
