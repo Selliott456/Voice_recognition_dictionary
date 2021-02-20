@@ -9,7 +9,6 @@ const Home = () => {
 
   const [input, updateInput] = useState('')
   const [search, updateSearch] = useState('')
-  const [errorMessage, updateErrorMessage] = ('')
 
   function handleChange(event) {
     const input = event.target.value
@@ -18,13 +17,10 @@ const Home = () => {
   }
 
   function handleSubmit(event) {
-    if (input = '') {
-      updateErrorMessage('Please enter a word!')
-    } else {
-      event.preventDefault()
-      updateSearch(input)
-    }
+    event.preventDefault()
+    updateSearch(input)
   }
+
 
 
 
@@ -38,7 +34,6 @@ const Home = () => {
         onChange={handleChange}
         name="word"
       />
-      <span>{errorMessage}</span>
       <button><Link className="button" to={{ pathname: '/results', aboutProps: { input } }}>Search</Link>
       </button>
     </form>
