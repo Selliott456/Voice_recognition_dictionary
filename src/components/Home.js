@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import logo from '../styles/logo.png'
 import '../styles/style.scss'
 import 'core-js/stable'
+import regeneratorRuntime from 'regenerator-runtime'
 import Vocal from '@untemps/react-vocal'
 
 
@@ -39,6 +40,7 @@ const Home = () => {
     <form onSubmit={handleSubmit}>
       <label className="enter">Enter a word!</label>
       <input
+      defaultValue={result}
         placeholder="Enter word"
         type="text"
         onChange={handleChange}
@@ -55,7 +57,6 @@ const Home = () => {
           onResult={_onVocalResult}
           style={{ width: 16, position: 'absolute', right: 10, top: -2 }}
         />
-        <input defaultValue={result} style={{ width: 300, height: 40 }} />
       </span>
     </div>
   </main>
