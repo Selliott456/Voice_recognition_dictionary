@@ -26,6 +26,9 @@ body {
   padding: 0;
   font-family: var(--font);
 }
+h1, h2, h3, h4 {
+  color: var(--extraLight)
+}
 #logo{
   height: 40vh;
 }
@@ -52,8 +55,16 @@ button {
   height: 30px;
   margin: 20px;
 }
+.search {
+  text-decoration: none;
+  color: var(--extraLight);
+  font-size: 20px;
+}
 .button {
+  background-color: var(--light);
   font-size: 20px;
   color: #F4DB7D;
   text-decoration: none;
+  padding: 20px;
+  border-radius: 4px;
 }

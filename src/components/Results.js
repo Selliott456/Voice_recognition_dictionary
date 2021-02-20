@@ -29,30 +29,33 @@ const Results = (props) => {
         })
         .catch(function (error) {
           updateWord('')
-          return updateErrorMessage('this word does not exist')
+          return updateErrorMessage('This word does not exist')
         })
 
     }
   }, [])
-  
+
   if (errorMessage) {
     return <div><h1>{errorMessage}</h1>
-    <Link to="/">Enter Another Word</Link>
+      <Link className="button" to="/">Enter Another Word</Link>
+    </div>
+  } else if (!search) {
+    return <div>
+      <h1>You didn't enter a word!</h1>
+      <Link className="button" to="/">Enter Another Word</Link>
     </div>
 
   } else if (!word) {
     return <h1>Loading</h1>
   } else {
-
-    return <div>
+    return <div role="main">
       <h1>{word.word && word.word}</h1>
-      <span>{errorMessage}</span>
       {word.results && word.results.map((result, index) => {
         return <details key={index}>
-          <summary>Result {index + 1}</summary>
-          <h4>Definition</h4>
+          <summary id="summary">Result {index + 1}</summary>
+          <h2>Definition</h2>
           <p >{result.definition}</p>
-          <h4>Type of word</h4>
+          <h3>Type of word</h3>
           <small>{result.partOfSpeech}</small>
           <h4>synonyms</h4>
           <ul>
@@ -65,7 +68,7 @@ const Results = (props) => {
         </details>
       })}
 
-      <Link to="/">Home</Link>
+      <Link className="button" to="/">Home</Link>
     </div>
   }
 

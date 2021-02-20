@@ -34,7 +34,7 @@ const Home = () => {
         onChange={handleChange}
         name="word"
       />
-      <button><Link className="button" to={{ pathname: '/results', aboutProps: { input } }}>Search</Link>
+      <button><Link className="search" to={{ pathname: '/results', aboutProps: { input } }}>Search</Link>
       </button>
     </form>
   </main>
