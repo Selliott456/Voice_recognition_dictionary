@@ -9,7 +9,7 @@ module.exports = env => {
     output: {
       filename: 'bundle.js',
       path: path.resolve('dist'),
-      publicPath: '/',
+      publicPath: '/'
     },
     devtool: 'source-map',
     module: {

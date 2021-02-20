@@ -1,13 +1,15 @@
-import axios from 'axios'
-import React, { useState, useEffect } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../styles/logo.png'
 import '../styles/style.scss'
+import 'core-js/stable'
+import Vocal from '@untemps/react-vocal'
 
 
 const Home = () => {
- 
 
+  const [result, setResult] = useState('')
   const [input, updateInput] = useState('')
   const [search, updateSearch] = useState('')
 
@@ -21,7 +23,15 @@ const Home = () => {
     event.preventDefault()
     updateSearch(input)
   }
- 
+
+  const _onVocalStart = () => {
+    setResult('')
+  }
+
+  const _onVocalResult = (result) => {
+    setResult(result)
+  }
+
 
 
   return <main id="mainHome">
@@ -38,6 +48,16 @@ const Home = () => {
         <Link className="search" to={{ pathname: '/results', aboutProps: { input } }}>Search</Link>
       </button>
     </form>
+    <div className="App">
+      <span style={{ position: 'relative' }}>
+        <Vocal
+          onStart={_onVocalStart}
+          onResult={_onVocalResult}
+          style={{ width: 16, position: 'absolute', right: 10, top: -2 }}
+        />
+        <input defaultValue={result} style={{ width: 300, height: 40 }} />
+      </span>
+    </div>
   </main>
 
 }
