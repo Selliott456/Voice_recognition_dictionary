@@ -46,7 +46,9 @@ const Results = (props) => {
       <Link className="button" to="/">Enter Another Word</Link>
     </div>
   } else if (!word) {
-    return <h1>Loading</h1>
+    return <div className="loader">
+    </div>
+
   } else {
     return <div className="main" role="main">
       <h1 id="word">{word.word && word.word}</h1>

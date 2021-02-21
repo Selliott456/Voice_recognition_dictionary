@@ -37,6 +37,7 @@ const Home = () => {
 
 
   return <main id="mainHome">
+    <h1 id="title">Dictionary</h1>
     <img id="logo" src={logo} alt="logo"></img>
     <form onSubmit={handleSubmit}>
       <label className="enter">Enter a word!</label>
