@@ -31,6 +31,7 @@ const Home = () => {
 
   const _onVocalResult = (result) => {
     setResult(result)
+    updateInput(result)
   }
 
 
@@ -40,7 +41,7 @@ const Home = () => {
     <form onSubmit={handleSubmit}>
       <label className="enter">Enter a word!</label>
       <input
-      defaultValue={result}
+        defaultValue={result}
         placeholder="Enter word"
         type="text"
         onChange={handleChange}
@@ -53,9 +54,9 @@ const Home = () => {
     <div className="App">
       <span style={{ position: 'relative' }}>
         <Vocal
+          className="vocal"
           onStart={_onVocalStart}
           onResult={_onVocalResult}
-          style={{ width: 16, position: 'absolute', right: 10, top: -2 }}
         />
       </span>
     </div>

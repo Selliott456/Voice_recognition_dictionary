@@ -48,13 +48,13 @@ const Results = (props) => {
   } else if (!word) {
     return <h1>Loading</h1>
   } else {
-    return <div role="main">
+    return <div className="main" role="main">
       <h1 id="word">{word.word && word.word}</h1>
       <p className="instructions">Choose one of the results to see a definition!</p>
       {word.results && word.results.map((result, index) => {
         return <div key={index} className="container">
           <details >
-            <summary id="summary">Result {index + 1}</summary>
+            <summary id="summary">Definition no {index + 1}</summary>
             <section className="definition">
               <h2>Definition</h2>
               <p >{result.definition}</p>
